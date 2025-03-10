@@ -1,0 +1,112 @@
+{% extends "portfolio/layout.html" %}
+{% block content %}
+{% load static %}
+<div class="page-container">
+    <!-- Hero Section -->
+    <header class="row py-5">
+        <div class="col-md-4 position-relative">
+            <img src="{% static 'portfolio/img/profile.jpg' %}" alt="Martin Ozuna" class="img-fluid rounded-circle">
+            <div class="position-absolute top-0 end-0 translate-middle-y">
+                <i class="bi bi-dragon text-danger" style="font-size: 2.5rem; filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));"></i>
+            </div>
+        </div>
+        <div class="col-md-8 my-auto">
+            <h1>Soy <strong>Martin Ozuna</strong></h1>
+            <h3>Técnico Superior en Programación</h3>
+            <p class="lead">
+                Desarrollador Full Stack apasionado por crear soluciones web innovadoras y funcionales. Actualmente estudio Data Science e IA. 
+                <span class="text-danger">龍</span>
+            </p>
+            <!-- Social Buttons -->
+            <div class="social-buttons mt-4">
+                <a href="https://github.com/G1Martoz" class="btn btn-outline-light me-2 btn-lg" target="_blank">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/martinozuna" class="btn btn-outline-info me-2 btn-lg" target="_blank">
+                    <i class="bi bi-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:g1martinozuna@gmail.com" class="btn btn-outline-primary me-2 btn-lg" target="_blank">
+                    <i class="bi bi-envelope"></i> Contacto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section class="skills-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Habilidades Técnicas</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="skill-category">
+                        <h3><i class="bi bi-code-slash"></i> Frontend</h3>
+                        <ul class="list-unstyled">
+                            <li>HTML5 / CSS3</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>React</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="skill-category">
+                        <h3><i class="bi bi-server"></i> Backend</h3>
+                        <ul class="list-unstyled">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>Java</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="skill-category">
+                        <h3><i class="bi bi-graph-up"></i> Data Science</h3>
+                        <ul class="list-unstyled">
+                            <li>Web Scraping</li>
+                            <li>Pandas</li>
+                            <li>Data Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="skill-category">
+                        <h3><i class="bi bi-tools"></i> Herramientas</h3>
+                        <ul class="list-unstyled">
+                            <li>Git</li>
+                            <li>VS Code</li>
+                            <li>PostgreSQL</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Mis Proyectos</h2>
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 bg-dark bg-gradient">
+                        <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                            {% if project.url %}
+                            <a href="{{ project.url }}" class="btn btn-outline-info btn-sm fw-bold w-100" target="_blank">
+                                <i class="bi bi-link-45deg"></i> Ver Proyecto
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

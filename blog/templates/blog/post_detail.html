@@ -1,0 +1,36 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <article class="blog-post bg-dark rounded-3 p-4 shadow-lg" data-aos="fade-up">
+        {% if post.image %}
+        <div class="text-center mb-4">
+            <img src="{{ post.image.url }}" class="img-fluid rounded-3" alt="{{ post.title }}">
+        </div>
+        {% endif %}
+        
+        <header class="blog-post-header mb-4">
+            <h1 class="display-4 fw-bold mb-3">{{ post.title }}</h1>
+            <div class="blog-post-meta text-muted mb-4">
+                <span class="me-3">
+                    <i class="bi bi-calendar3"></i> {{ post.date|date:"d M, Y" }}
+                </span>
+                <span>
+                    <i class="bi bi-person"></i> {{ post.author }}
+                </span>
+            </div>
+        </header>
+
+        <div class="blog-post-content mb-4">
+            {{ post.description|safe|linebreaks }}
+        </div>
+
+        <div class="text-start">
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left me-2"></i>Volver al Blog
+            </a>
+        </div>
+    </article>
+</div>
+{% endblock %}

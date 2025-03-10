@@ -1,0 +1,32 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5 fw-bold">Blog</h1>
+    
+    <div class="row g-4">
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-4">
+            <article class="card h-100 bg-dark border-0 shadow-lg" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1|stringformat:'i'}}00">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title h5 fw-bold mb-3">{{ post.title }}</h2>
+                    <p class="card-text text-muted mb-3">{{ post.description|truncatewords:30 }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="bi bi-calendar3"></i> {{ post.date|date:"d M, Y" }}
+                        </small>
+                        <a href="{% url 'blog:post_detail' post.pk %}" class="btn btn-outline-primary btn-sm">
+                            Leer más <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

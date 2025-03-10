@@ -1,0 +1,34 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'portfolio:home' %}">
+          <i class="bi bi-code-slash"></i> Martoz
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'portfolio:home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog:post_list' %}" >Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mailto:g1martinozuna@gmail.com" target="_blank">Contacto</a>
+                </li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-outline-light" href="{% static 'portfolio/CV-martoz.pdf' %}" target="_blank">
+                          <i class="bi bi-download me-2"></i>Download CV
+                      </a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Spacer for fixed navbar -->
+<div class="navbar-spacer"></div>
