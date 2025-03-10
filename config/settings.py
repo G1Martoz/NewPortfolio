@@ -66,12 +66,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Martoz$DjangoDB',
         'USER': 'Martoz',
         'PASSWORD': 'QJ75wox0j2Zt',
-        'HOST': 'Martoz-3290.postgres.pythonanywhere-services.com',
-        'PORT': '13290',
+        'HOST': 'Martoz.mysql.pythonanywhere-services.com',
+        'PORT': '',
     }
 }
 
