@@ -1,0 +1,28 @@
+/* Estilo para el contenedor del editor */
+.ck.ck-editor__main>.ck-editor__editable {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+/* Estilo para la barra de herramientas */
+.ck.ck-editor__top .ck-toolbar {
+    background: #2c2c2c !important;
+    border: 1px solid #404040 !important;
+}
+
+/* Estilo para los botones de la barra de herramientas */
+.ck.ck-toolbar .ck-toolbar__items .ck-button {
+    color: #fff !important;
+}
+
+/* Quitar bordes y fondos blancos */
+.ck.ck-reset_all * {
+    background: transparent !important;
+}
+
+/* Color del texto al escribir */
+.ck-editor__editable {
+    color: #fff !important;
+}

@@ -4,33 +4,83 @@
 {% block content %}
 <div class="container py-5">
     <article class="blog-post bg-dark rounded-3 p-4 shadow-lg" data-aos="fade-up">
-        {% if post.image %}
-        <div class="text-center mb-4">
-            <img src="{{ post.image.url }}" class="img-fluid rounded-3" alt="{{ post.title }}">
-        </div>
-        {% endif %}
-        
+        <!-- Header del post -->
         <header class="blog-post-header mb-4">
             <h1 class="display-4 fw-bold mb-3">{{ post.title }}</h1>
             <div class="blog-post-meta text-muted mb-4">
                 <span class="me-3">
                     <i class="bi bi-calendar3"></i> {{ post.date|date:"d M, Y" }}
                 </span>
-                <span>
-                    <i class="bi bi-person"></i> {{ post.author }}
-                </span>
             </div>
         </header>
 
-        <div class="blog-post-content mb-4">
-            {{ post.description|safe|linebreaks }}
+        <!-- Imagen principal con efecto hover -->
+        {% if post.image %}
+        <div class="featured-image-container mb-5">
+            <a href="{{ post.image.url }}" data-lightbox="post-images" class="d-block">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded shadow-sm hover-zoom">
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Contenido del post -->
+        <div class="blog-post-content mb-5">
+            {{ post.description|safe }}
         </div>
 
-        <div class="text-start">
+        <!-- Galería de imágenes adicionales -->
+        {% if post.images.all %}
+        <div class="image-gallery mb-5">
+            <h4 class="mb-4">Galería de imágenes</h4>
+            <div class="row g-4">
+                {% for image in post.images.all %}
+                <div class="col-md-4">
+                    <a href="{{ image.image.url }}" data-lightbox="post-images" class="gallery-item">
+                        <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid rounded shadow-sm hover-zoom">
+                        {% if image.caption %}
+                        <div class="caption mt-2 text-muted small">{{ image.caption }}</div>
+                        {% endif %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Botón de regreso -->
+        <div class="text-start mt-4">
             <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary">
                 <i class="bi bi-arrow-left me-2"></i>Volver al Blog
             </a>
         </div>
     </article>
 </div>
+
+<!-- Estilos adicionales -->
+<style>
+    .hover-zoom {
+        transition: transform 0.3s ease;
+    }
+    .hover-zoom:hover {
+        transform: scale(1.02);
+    }
+    .gallery-item {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+    .featured-image-container img {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+    }
+    .blog-post-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    .blog-post {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
 {% endblock %}
